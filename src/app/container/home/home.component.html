@@ -1,54 +1,80 @@
 <section class="o-section">
   <h1 class="o-section__title">Reactive form</h1>
-  <pre>
-    {{ userForm.value | json }}
-  </pre>
   <form class="o-creation-form" [formGroup]="userForm">
     <!-- Name -->
     <div>
       <mat-form-field class="c-input">
         <mat-label>Nombre</mat-label>
-        <input matInput formControlName="name" />
+        <input matInput formControlName="name" (blur)="validateControls()" />
+        <mat-error>
+          {{ formErrors.name }}
+        </mat-error>
       </mat-form-field>
     </div>
     <!-- surname -->
     <div>
       <mat-form-field class="c-input">
         <mat-label>Primer apellido</mat-label>
-        <input matInput formControlName="surname" />
+        <input matInput formControlName="surname" (blur)="validateControls()" />
+        <mat-error>
+          {{ formErrors.surname }}
+        </mat-error>
       </mat-form-field>
     </div>
     <!-- Email -->
     <div>
       <mat-form-field class="c-input">
         <mat-label>Correo electrónico</mat-label>
-        <input matInput formControlName="email" />
+        <input matInput formControlName="email" (blur)="validateControls()" />
+        <mat-error>
+          {{ formErrors.email }}
+        </mat-error>
       </mat-form-field>
     </div>
     <!-- Country -->
     <div>
       <mat-form-field>
         <mat-label>País</mat-label>
-        <mat-select>
-          <mat-option>
-            -
+        <mat-select
+          formControlName="countryId"
+          (openedChange)="validateControls()"
+        >
+          <mat-option
+            [value]="country.numericCode"
+            *ngFor="let country of countriesService.countries$ | async"
+          >
+            {{ country.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-error>
+        {{ formErrors.countryId }}
+      </mat-error>
     </div>
     <!-- Gender -->
     <div>
-      <mat-radio-group aria-label="Selecciona una opción">
-        <mat-radio-button value="1">Masculino</mat-radio-button>
-        <mat-radio-button value="2">Femenino</mat-radio-button>
+      <mat-radio-group
+        aria-label="Selecciona una opción"
+        formControlName="gender"
+      >
+        <mat-radio-button value="male">Masculino</mat-radio-button>
+        <mat-radio-button value="female">Femenino</mat-radio-button>
       </mat-radio-group>
     </div>
     <!-- Telephone -->
     <div>
       <mat-form-field class="c-input">
         <mat-label>Teléfono</mat-label>
-        <input matInput formControlName="phone" />
+        <input matInput formControlName="phone" (blur)="validateControls()" />
+        <mat-error>
+          {{ formErrors.phone }}
+        </mat-error>
       </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button color="warn" [disabled]="userForm.invalid">
+        Aplicar
+      </button>
     </div>
   </form>
 </section>
