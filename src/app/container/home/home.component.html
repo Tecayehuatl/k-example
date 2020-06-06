@@ -1,25 +1,28 @@
 <section class="o-section">
   <h1 class="o-section__title">Reactive form</h1>
-  <form class="o-creation-form">
+  <pre>
+    {{ userForm.value | json }}
+  </pre>
+  <form class="o-creation-form" [formGroup]="userForm">
     <!-- Name -->
     <div>
       <mat-form-field class="c-input">
         <mat-label>Nombre</mat-label>
-        <input matInput />
+        <input matInput formControlName="name" />
       </mat-form-field>
     </div>
     <!-- surname -->
     <div>
       <mat-form-field class="c-input">
         <mat-label>Primer apellido</mat-label>
-        <input matInput />
+        <input matInput formControlName="surname" />
       </mat-form-field>
     </div>
     <!-- Email -->
     <div>
       <mat-form-field class="c-input">
         <mat-label>Correo electrónico</mat-label>
-        <input matInput />
+        <input matInput formControlName="email" />
       </mat-form-field>
     </div>
     <!-- Country -->
@@ -44,7 +47,7 @@
     <div>
       <mat-form-field class="c-input">
         <mat-label>Teléfono</mat-label>
-        <input matInput />
+        <input matInput formControlName="phone" />
       </mat-form-field>
     </div>
   </form>
