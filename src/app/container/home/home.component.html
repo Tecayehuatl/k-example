@@ -1,12 +1,51 @@
-<p>home works!</p>
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Favorite food</mat-label>
-    <input matInput placeholder="Ex. Pizza" value="Sushi" />
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Leave a comment</mat-label>
-    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-  </mat-form-field>
-</form>
+<section class="o-section">
+  <h1 class="o-section__title">Reactive form</h1>
+  <form class="o-creation-form">
+    <!-- Name -->
+    <div>
+      <mat-form-field class="c-input">
+        <mat-label>Nombre</mat-label>
+        <input matInput />
+      </mat-form-field>
+    </div>
+    <!-- surname -->
+    <div>
+      <mat-form-field class="c-input">
+        <mat-label>Primer apellido</mat-label>
+        <input matInput />
+      </mat-form-field>
+    </div>
+    <!-- Email -->
+    <div>
+      <mat-form-field class="c-input">
+        <mat-label>Correo electrónico</mat-label>
+        <input matInput />
+      </mat-form-field>
+    </div>
+    <!-- Country -->
+    <div>
+      <mat-form-field>
+        <mat-label>País</mat-label>
+        <mat-select>
+          <mat-option>
+            -
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- Gender -->
+    <div>
+      <mat-radio-group aria-label="Selecciona una opción">
+        <mat-radio-button value="1">Masculino</mat-radio-button>
+        <mat-radio-button value="2">Femenino</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <!-- Telephone -->
+    <div>
+      <mat-form-field class="c-input">
+        <mat-label>Teléfono</mat-label>
+        <input matInput />
+      </mat-form-field>
+    </div>
+  </form>
+</section>
